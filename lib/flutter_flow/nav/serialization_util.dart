@@ -211,6 +211,10 @@ dynamic deserializeParam<T>(
             return QuizOptionsRow(data);
           case QuizRow:
             return QuizRow(data);
+          case OptionsRow:
+            return OptionsRow(data);
+          case XPObjectTypeRow:
+            return XPObjectTypeRow(data);
           default:
             return null;
         }

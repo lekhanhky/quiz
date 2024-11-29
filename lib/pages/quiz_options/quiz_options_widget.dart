@@ -234,7 +234,7 @@ class _QuizOptionsWidgetState extends State<QuizOptionsWidget> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.network(
-                                    quizDetailItem.optionImg!,
+                                    quizDetailItem.image!,
                                     width: 200.0,
                                     height: 200.0,
                                     fit: BoxFit.cover,

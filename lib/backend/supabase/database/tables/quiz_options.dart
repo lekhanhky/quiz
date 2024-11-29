@@ -20,8 +20,11 @@ class QuizOptionsRow extends SupabaseDataRow {
   int get quizId => getField<int>('quiz_id')!;
   set quizId(int value) => setField<int>('quiz_id', value);
 
-  String get optionText => getField<String>('option_text')!;
-  set optionText(String value) => setField<String>('option_text', value);
+  int? get optionId => getField<int>('option_id');
+  set optionId(int? value) => setField<int>('option_id', value);
+
+  String? get optionText => getField<String>('option_text');
+  set optionText(String? value) => setField<String>('option_text', value);
 
   String? get optionImg => getField<String>('option_img');
   set optionImg(String? value) => setField<String>('option_img', value);

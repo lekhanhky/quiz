@@ -21,8 +21,8 @@ class QuizWithOptionsRow extends SupabaseDataRow {
   String? get question => getField<String>('question');
   set question(String? value) => setField<String>('question', value);
 
-  String? get optionText => getField<String>('option_text');
-  set optionText(String? value) => setField<String>('option_text', value);
+  String? get text => getField<String>('text');
+  set text(String? value) => setField<String>('text', value);
 
   int? get qoid => getField<int>('qoid');
   set qoid(int? value) => setField<int>('qoid', value);
@@ -30,8 +30,8 @@ class QuizWithOptionsRow extends SupabaseDataRow {
   int? get correctQuestion => getField<int>('correct_question');
   set correctQuestion(int? value) => setField<int>('correct_question', value);
 
-  String? get optionImg => getField<String>('option_img');
-  set optionImg(String? value) => setField<String>('option_img', value);
+  String? get image => getField<String>('image');
+  set image(String? value) => setField<String>('image', value);
 
   String? get quizSound => getField<String>('quiz_sound');
   set quizSound(String? value) => setField<String>('quiz_sound', value);

@@ -8,3 +8,5 @@ export 'table.dart';
 export 'tables/quiz_with_options.dart';
 export 'tables/quiz_options.dart';
 export 'tables/quiz.dart';
+export 'tables/options.dart';
+export 'tables/x_p_object_type.dart';
