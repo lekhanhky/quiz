@@ -145,8 +145,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                tileColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                tileColor: FlutterFlowTheme.of(context).warning,
                                 dense: false,
                                 contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
