@@ -94,39 +94,66 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewQuizRow =
                             listViewQuizRowList[listViewIndex];
-                        return Material(
-                          color: Colors.transparent,
-                          child: ListTile(
-                            title: Text(
-                              listViewQuizRow.id.toString(),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: 'Inter Tight',
-                                    letterSpacing: 0.0,
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 0.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'Quiz_Options',
+                                queryParameters: {
+                                  'quizID': serializeParam(
+                                    listViewQuizRow.id,
+                                    ParamType.int,
                                   ),
-                            ),
-                            subtitle: Text(
-                              listViewQuizRow.question,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
+                                  'soundurl': serializeParam(
+                                    listViewQuizRow.quizSound,
+                                    ParamType.String,
                                   ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            dense: false,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 12.0, 0.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
+                                }.withoutNulls,
+                              );
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              child: ListTile(
+                                title: Text(
+                                  listViewQuizRow.id.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        fontFamily: 'Inter Tight',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                subtitle: Text(
+                                  listViewQuizRow.question,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                tileColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                                dense: false,
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                              ),
                             ),
                           ),
                         );

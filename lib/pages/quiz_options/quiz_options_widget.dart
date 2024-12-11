@@ -1,9 +1,9 @@
 import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_audio_player.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:just_audio/just_audio.dart';
 import 'quiz_options_model.dart';
 export 'quiz_options_model.dart';
@@ -13,11 +13,11 @@ class QuizOptionsWidget extends StatefulWidget {
   const QuizOptionsWidget({
     super.key,
     required this.quizID,
-    required this.correctQues,
+    required this.soundurl,
   });
 
   final int? quizID;
-  final int? correctQues;
+  final String? soundurl;
 
   @override
   State<QuizOptionsWidget> createState() => _QuizOptionsWidgetState();
@@ -32,6 +32,18 @@ class _QuizOptionsWidgetState extends State<QuizOptionsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => QuizOptionsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.soundPlayer1 ??= AudioPlayer();
+      if (_model.soundPlayer1!.playing) {
+        await _model.soundPlayer1!.stop();
+      }
+      _model.soundPlayer1!.setVolume(1.0);
+      _model.soundPlayer1!
+          .setUrl(widget.soundurl!)
+          .then((_) => _model.soundPlayer1!.play());
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -134,7 +146,7 @@ class _QuizOptionsWidgetState extends State<QuizOptionsWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Inter',
-                                      fontSize: 20.0,
+                                      fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -142,40 +154,13 @@ class _QuizOptionsWidgetState extends State<QuizOptionsWidget> {
                             ),
                           ),
                         ),
-                        FlutterFlowAudioPlayer(
-                          audio: Audio.network(
-                            quizOptionsQuizWithOptionsRowList.first.quizSound!,
-                            metas: Metas(
-                              title: 'Câu hỏi',
-                            ),
-                          ),
-                          titleTextStyle:
-                              FlutterFlowTheme.of(context).titleLarge.override(
-                                    fontFamily: 'Inter Tight',
-                                    letterSpacing: 0.0,
-                                  ),
-                          playbackDurationTextStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          playbackButtonColor:
-                              FlutterFlowTheme.of(context).primary,
-                          activeTrackColor:
-                              FlutterFlowTheme.of(context).primary,
-                          inactiveTrackColor:
-                              FlutterFlowTheme.of(context).alternate,
-                          elevation: 0.0,
-                          playInBackground: PlayInBackground.enabled,
-                        ),
                       ],
                     ),
                   ),
                   Divider(
-                    thickness: 2.0,
-                    color: FlutterFlowTheme.of(context).alternate,
+                    height: 1.0,
+                    thickness: 1.0,
+                    color: FlutterFlowTheme.of(context).secondary,
                   ),
                   Flex(
                     direction: Axis.vertical,
@@ -208,17 +193,6 @@ class _QuizOptionsWidgetState extends State<QuizOptionsWidget> {
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   if (quizDetailItem.iscorrect!) {
-                                    _model.soundPlayer1 ??= AudioPlayer();
-                                    if (_model.soundPlayer1!.playing) {
-                                      await _model.soundPlayer1!.stop();
-                                    }
-                                    _model.soundPlayer1!.setVolume(1.0);
-                                    _model.soundPlayer1!
-                                        .setUrl(
-                                            'https://dqjzsvmipzeupgqkowpf.supabase.co/storage/v1/object/public/sound/dung.mp3?t=2024-11-16T09%3A55%3A31.252Z')
-                                        .then(
-                                            (_) => _model.soundPlayer1!.play());
-                                  } else {
                                     _model.soundPlayer2 ??= AudioPlayer();
                                     if (_model.soundPlayer2!.playing) {
                                       await _model.soundPlayer2!.stop();
@@ -226,9 +200,20 @@ class _QuizOptionsWidgetState extends State<QuizOptionsWidget> {
                                     _model.soundPlayer2!.setVolume(1.0);
                                     _model.soundPlayer2!
                                         .setUrl(
-                                            'https://dqjzsvmipzeupgqkowpf.supabase.co/storage/v1/object/public/sound/sai.mp3')
+                                            'https://dqjzsvmipzeupgqkowpf.supabase.co/storage/v1/object/public/sound/dung.mp3?t=2024-11-16T09%3A55%3A31.252Z')
                                         .then(
                                             (_) => _model.soundPlayer2!.play());
+                                  } else {
+                                    _model.soundPlayer3 ??= AudioPlayer();
+                                    if (_model.soundPlayer3!.playing) {
+                                      await _model.soundPlayer3!.stop();
+                                    }
+                                    _model.soundPlayer3!.setVolume(1.0);
+                                    _model.soundPlayer3!
+                                        .setUrl(
+                                            'https://dqjzsvmipzeupgqkowpf.supabase.co/storage/v1/object/public/sound/sai.mp3')
+                                        .then(
+                                            (_) => _model.soundPlayer3!.play());
                                   }
                                 },
                                 child: ClipRRect(

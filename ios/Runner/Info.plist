@@ -44,10 +44,6 @@
 
 
 
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>audio</string>
-    </array>
 
 
 	<key>UILaunchStoryboardName</key>

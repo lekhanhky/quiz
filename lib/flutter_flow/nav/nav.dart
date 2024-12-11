@@ -50,14 +50,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'quizID',
               ParamType.int,
             ),
-            correctQues: params.getParam(
-              'correctQues',
-              ParamType.int,
+            soundurl: params.getParam(
+              'soundurl',
+              ParamType.String,
             ),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {

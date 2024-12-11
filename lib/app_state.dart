@@ -46,6 +46,12 @@ class FFAppState extends ChangeNotifier {
     _soundSai = value;
     prefs.setString('ff_soundSai', value);
   }
+
+  String _SoundURL = '';
+  String get SoundURL => _SoundURL;
+  set SoundURL(String value) {
+    _SoundURL = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

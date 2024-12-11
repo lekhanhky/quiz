@@ -29,8 +29,6 @@ dependencies:
     sdk: flutter
   app_links: 6.3.2
   app_links_platform_interface: 2.0.2
-  assets_audio_player: 3.1.1
-  assets_audio_player_web: 3.1.1
   audio_session: 0.1.21
   auto_size_text: 3.0.0
   cached_network_image: 3.4.1
@@ -61,7 +59,6 @@ dependencies:
   postgrest: 2.1.4
   provider: 6.1.2
   realtime_client: 2.2.1
-  rxdart: 0.27.7
   shared_preferences: 2.3.2
   shared_preferences_android: 2.3.2
   shared_preferences_foundation: 2.5.2
